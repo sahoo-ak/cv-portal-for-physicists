@@ -7,8 +7,9 @@ import ResearchItem from "@/components/ResearchItem";
 import PublicationItem from "@/components/PublicationItem";
 import ExperienceItem from "@/components/ExperienceItem";
 import AwardItem from "@/components/AwardItem";
+import ConferenceItem from "@/components/ConferenceItem";
 import ContactForm from "@/components/ContactForm";
-import { researchProjects, publications, experiences, awards, skills } from "@/lib/data";
+import { researchProjects, publications, experiences, awards, skills, conferencesAndSchools } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
 const Index: React.FC = () => {
@@ -61,11 +62,34 @@ const Index: React.FC = () => {
           </div>
         </Section>
         
+        {/* Conferences & Schools Section */}
+        <Section 
+          id="conferences" 
+          title="Conferences & Schools" 
+          subtitle="Academic events and specialized training programs attended"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {conferencesAndSchools.map((item, index) => (
+              <ConferenceItem 
+                key={item.id}
+                title={item.title}
+                organization={item.organization}
+                location={item.location}
+                date={item.date}
+                description={item.description}
+                type={item.type}
+                index={index}
+              />
+            ))}
+          </div>
+        </Section>
+        
         {/* Experience Section */}
         <Section 
           id="experience" 
           title="Academic Experience" 
           subtitle="My research and teaching experience"
+          className="bg-gray-50"
         >
           <div className="max-w-3xl mx-auto">
             {experiences.map((experience, index) => (
@@ -114,7 +138,6 @@ const Index: React.FC = () => {
           id="awards" 
           title="Honors & Awards" 
           subtitle="Recognition for academic and research excellence"
-          className="bg-gray-50"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {awards.map((award, index) => (
@@ -135,6 +158,7 @@ const Index: React.FC = () => {
           id="contact" 
           title="Get in Touch" 
           subtitle="Interested in collaboration or have questions about my research?"
+          className="bg-gray-50"
         >
           <div className="max-w-3xl mx-auto">
             <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-8">
