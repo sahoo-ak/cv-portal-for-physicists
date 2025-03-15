@@ -1,6 +1,10 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { cn } from "@/lib/utils";
+import { FileText, ExternalLink } from 'lucide-react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 interface PublicationItemProps {
   title: string;
@@ -8,6 +12,7 @@ interface PublicationItemProps {
   journal: string;
   year: number;
   doi?: string;
+  pdfUrl?: string;
   index: number;
 }
 
@@ -17,8 +22,39 @@ const PublicationItem: React.FC<PublicationItemProps> = ({
   journal, 
   year, 
   doi,
+  pdfUrl,
   index
 }) => {
+  const [passwordDialogOpen, setPasswordDialogOpen] = useState(false);
+  const [password, setPassword] = useState('');
+  const [passwordError, setPasswordError] = useState(false);
+
+  // This would be replaced with your actual password validation logic
+  const correctPassword = "academia123"; // In a real app, this should be securely managed
+
+  const handleDownloadPDF = () => {
+    if (pdfUrl) {
+      setPasswordDialogOpen(true);
+    }
+  };
+
+  const handlePasswordSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (password === correctPassword) {
+      setPasswordError(false);
+      setPasswordDialogOpen(false);
+      
+      // Redirect to PDF
+      window.open(pdfUrl, '_blank');
+      
+      // Reset password field
+      setPassword('');
+    } else {
+      setPasswordError(true);
+    }
+  };
+
   return (
     <div 
       className={cn(
@@ -44,22 +80,65 @@ const PublicationItem: React.FC<PublicationItemProps> = ({
           </div>
         </div>
         
-        {doi && (
-          <a 
-            href={`https://doi.org/${doi}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
-            aria-label="View publication"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M18 13V19C18 19.5304 17.7893 20.0391 17.4142 20.4142C17.0391 20.7893 16.5304 21 16 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V8C3 7.46957 3.21071 6.96086 3.58579 6.58579C3.96086 6.21071 4.46957 6 5 6H11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M15 3H21V9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M10 14L21 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </a>
-        )}
+        <div className="flex gap-2">
+          {pdfUrl && (
+            <button
+              onClick={handleDownloadPDF}
+              className="shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+              aria-label="Download PDF"
+            >
+              <FileText size={18} />
+            </button>
+          )}
+          
+          {doi && (
+            <a 
+              href={`https://doi.org/${doi}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+              aria-label="View publication"
+            >
+              <ExternalLink size={18} />
+            </a>
+          )}
+        </div>
       </div>
+
+      <Dialog open={passwordDialogOpen} onOpenChange={setPasswordDialogOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>Protected Publication</DialogTitle>
+            <DialogDescription>
+              This publication requires a password to download. Please enter the password below.
+            </DialogDescription>
+          </DialogHeader>
+          
+          <form onSubmit={handlePasswordSubmit} className="space-y-4">
+            <div className="space-y-2">
+              <Input 
+                type="password" 
+                value={password} 
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter password"
+                className={passwordError ? "border-red-500" : ""}
+              />
+              {passwordError && (
+                <p className="text-xs text-red-500">Incorrect password. Please try again.</p>
+              )}
+            </div>
+            
+            <DialogFooter>
+              <Button type="button" variant="outline" onClick={() => setPasswordDialogOpen(false)}>
+                Cancel
+              </Button>
+              <Button type="submit">
+                Download PDF
+              </Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
