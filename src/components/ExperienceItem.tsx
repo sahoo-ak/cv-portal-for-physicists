@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { cn } from "@/lib/utils";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface ExperienceItemProps {
   title: string;
@@ -21,6 +22,8 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({
   description,
   index
 }) => {
+  const isMobile = useIsMobile();
+  
   return (
     <div 
       className={cn(
@@ -35,9 +38,9 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({
       <div className="absolute left-0 w-5 h-5 -ml-2 rounded-full border-2 border-white bg-gray-200 shadow-sm group-hover:bg-gray-300 transition-colors" />
       
       <div className="transition-all duration-500 ease-out-expo" style={{ transitionDelay: `${index * 100}ms` }}>
-        <div className="flex flex-wrap justify-between items-start gap-x-4 mb-2">
-          <h3 className="text-xl font-medium">{title}</h3>
-          <div className="text-sm bg-gray-100 px-3 py-1 rounded-full">
+        <div className="flex flex-wrap lg:flex-nowrap justify-between items-start gap-x-4 mb-2">
+          <h3 className="text-xl lg:text-2xl font-medium">{title}</h3>
+          <div className="text-sm lg:text-base bg-gray-100 px-3 py-1 rounded-full whitespace-nowrap mt-1 lg:mt-0">
             {startDate} – {endDate || 'Present'}
           </div>
         </div>
@@ -52,7 +55,7 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({
           )}
         </div>
         
-        <p className="text-gray-600">
+        <p className="text-gray-600 lg:text-lg max-w-prose">
           {description}
         </p>
       </div>

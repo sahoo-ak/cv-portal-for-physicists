@@ -49,17 +49,17 @@ const Section: React.FC<SectionProps> = ({
       className={cn("section-container", className)}
     >
       <div className={cn(
-        "max-w-3xl mx-auto text-center mb-16 transition-opacity duration-700",
+        "max-w-4xl mx-auto text-center mb-16 lg:mb-24 transition-opacity duration-700",
         isVisible ? "opacity-100" : "opacity-0"
       )}>
         <span className="inline-block px-3 py-1 text-xs font-medium bg-gray-100 rounded-full mb-3 tracking-wider uppercase">
           {id}
         </span>
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif mb-4 tracking-tight">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-serif mb-4 tracking-tight">
           {title}
         </h2>
         {subtitle && (
-          <p className="text-lg text-gray-600">
+          <p className="text-lg md:text-xl lg:text-2xl text-gray-600">
             {subtitle}
           </p>
         )}
