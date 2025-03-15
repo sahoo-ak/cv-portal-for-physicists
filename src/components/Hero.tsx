@@ -1,5 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
+import { Button } from "@/components/ui/button";
+import { Github, ExternalLink } from "lucide-react";
 
 const Hero: React.FC = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -44,6 +46,68 @@ const Hero: React.FC = () => {
                 >
                   Get in Touch
                 </a>
+              </div>
+              
+              {/* Academic social profiles */}
+              <div className="mt-8 pt-8 border-t border-gray-100">
+                <h3 className="text-sm font-medium text-gray-500 mb-3">Academic Profiles</h3>
+                <div className="flex flex-wrap gap-3">
+                  <a 
+                    href="https://scholar.google.com" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center h-10 w-10 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors"
+                    aria-label="Google Scholar"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269z" />
+                      <path d="M12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z" />
+                    </svg>
+                  </a>
+                  <a 
+                    href="https://www.researchgate.net" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center h-10 w-10 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors"
+                    aria-label="ResearchGate"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M19.586 5.586a2 2 0 0 0-2.828 0L12 10.344 7.242 5.586a2 2 0 1 0-2.828 2.828L9.172 13.172a2 2 0 0 0 2.828 0l4.758-4.758a2 2 0 0 0 0-2.828z" />
+                      <circle cx="12" cy="12" r="10" />
+                    </svg>
+                  </a>
+                  <a 
+                    href="https://github.com" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center h-10 w-10 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors"
+                    aria-label="GitHub"
+                  >
+                    <Github size={20} />
+                  </a>
+                  <a 
+                    href="https://orcid.org" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center h-10 w-10 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors"
+                    aria-label="ORCID"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z" />
+                      <circle cx="12" cy="7" r="1" />
+                      <path d="M12 9v8" />
+                    </svg>
+                  </a>
+                  <a 
+                    href="https://sciprofiles.com" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center h-10 w-10 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors"
+                    aria-label="SciProfile"
+                  >
+                    <ExternalLink size={18} />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
