@@ -27,7 +27,7 @@ const ConferenceItem: React.FC<ConferenceItemProps> = ({
   return (
     <div 
       className={cn(
-        "rounded-lg p-6 transition-all duration-300",
+        "rounded-lg p-6 transition-all duration-300 mb-4",
         "border border-gray-100 hover:border-gray-200 hover:shadow-md",
         isEven ? "bg-white" : "bg-gray-50"
       )}
@@ -35,10 +35,10 @@ const ConferenceItem: React.FC<ConferenceItemProps> = ({
       <div className="flex items-start gap-4">
         <div className="mt-1">
           <div className={cn(
-            "w-10 h-10 rounded-full flex items-center justify-center",
+            "w-12 h-12 rounded-full flex items-center justify-center",
             type === "conference" ? "bg-blue-50 text-blue-500" : "bg-emerald-50 text-emerald-500"
           )}>
-            {type === "conference" ? <Presentation size={20} /> : <School size={20} />}
+            {type === "conference" ? <Presentation size={24} /> : <School size={24} />}
           </div>
         </div>
         
@@ -47,7 +47,7 @@ const ConferenceItem: React.FC<ConferenceItemProps> = ({
           
           <div className="flex flex-col gap-2 mb-4 text-sm md:text-base text-gray-600">
             <div className="flex items-center">
-              <div className="w-5 text-gray-400 mr-2">{organization}</div>
+              <div className="text-gray-600 mr-2">{organization}</div>
             </div>
             
             <div className="flex items-center">

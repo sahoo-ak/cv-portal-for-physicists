@@ -6,19 +6,36 @@ import { Menu, X } from "lucide-react";
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
   
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
+      
+      // Determine which section is currently in view
+      const sections = document.querySelectorAll('section[id]');
+      const scrollY = window.scrollY;
+      
+      sections.forEach(section => {
+        const sectionHeight = section.offsetHeight;
+        const sectionTop = (section as HTMLElement).offsetTop - 100;
+        const sectionId = section.getAttribute('id');
+        
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight && sectionId) {
+          setActiveSection(sectionId);
+        }
+      });
     };
     
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   
   const navItems = [
     { name: 'Home', href: '#home' },
     { name: 'Research', href: '#research' },
+    { name: 'Education', href: '#education' },
     { name: 'Publications', href: '#publications' },
     { name: 'Conferences', href: '#conferences' },
     { name: 'Experience', href: '#experience' },
@@ -58,8 +75,9 @@ const Header: React.FC = () => {
                 key={item.name}
                 href={item.href}
                 className={cn(
-                  "text-sm font-medium transition-colors hover:text-gray-900",
-                  isScrolled ? "text-gray-600" : "text-gray-700"
+                  "text-sm font-medium transition-colors hover:text-gray-900 relative py-1",
+                  isScrolled ? "text-gray-600" : "text-gray-700",
+                  activeSection === item.href.substring(1) && "text-gray-900 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-gray-900"
                 )}
               >
                 {item.name}
@@ -97,7 +115,10 @@ const Header: React.FC = () => {
             <a
               key={item.name}
               href={item.href}
-              className="text-lg font-medium py-2 border-b border-gray-100"
+              className={cn(
+                "text-lg font-medium py-2 border-b border-gray-100",
+                activeSection === item.href.substring(1) && "text-gray-900 font-semibold"
+              )}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {item.name}

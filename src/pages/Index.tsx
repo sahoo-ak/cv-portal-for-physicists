@@ -9,7 +9,8 @@ import EducationItem from "@/components/EducationItem";
 import AwardItem from "@/components/AwardItem";
 import ConferenceItem from "@/components/ConferenceItem";
 import ContactForm from "@/components/ContactForm";
-import { researchProjects, publications, experiences, education, awards, skills, conferencesAndSchools } from "@/lib/data";
+import SkillsSection from "@/components/SkillsSection";
+import { researchProjects, publications, experiences, education, awards, conferencesAndSchools, skills } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { Separator } from "@/components/ui/separator";
 
@@ -121,7 +122,7 @@ const Index: React.FC = () => {
           subtitle="Academic events and specialized training programs attended"
           className="bg-gray-50"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="max-w-3xl mx-auto">
             {conferencesAndSchools.map((item, index) => (
               <ConferenceItem 
                 key={item.id}
@@ -142,7 +143,6 @@ const Index: React.FC = () => {
           id="experience" 
           title="Academic Experience" 
           subtitle="My research and teaching experience"
-          className="bg-gray-50"
         >
           <div className="max-w-3xl mx-auto">
             {experiences.map((experience, index) => (
@@ -159,31 +159,7 @@ const Index: React.FC = () => {
             ))}
           </div>
           
-          <div className="mt-20">
-            <h3 className="text-2xl font-serif font-medium text-center mb-10">Skills & Expertise</h3>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {skills.map((skillGroup, index) => (
-                <div 
-                  key={index} 
-                  className={cn(
-                    "bg-white p-6 rounded-lg border border-gray-100 transition-all duration-300",
-                    "hover:shadow-md"
-                  )}
-                >
-                  <h4 className="text-lg font-medium mb-4">{skillGroup.category}</h4>
-                  <ul className="space-y-2">
-                    {skillGroup.items.map((skill, idx) => (
-                      <li key={idx} className="flex items-center text-gray-600">
-                        <span className="w-2 h-2 bg-gray-300 rounded-full mr-2" />
-                        {skill}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
+          <SkillsSection />
         </Section>
         
         {/* Awards Section */}
