@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
@@ -10,7 +11,15 @@ import AwardItem from "@/components/AwardItem";
 import ConferenceItem from "@/components/ConferenceItem";
 import ContactForm from "@/components/ContactForm";
 import SkillsSection from "@/components/SkillsSection";
-import { researchProjects, publications, experiences, education, awards, conferencesAndSchools, skills } from "@/lib/data";
+import { 
+  researchProjects, 
+  publications, 
+  experiences, 
+  education, 
+  awards, 
+  conferencesAndSchools, 
+  skills 
+} from "@/data";
 import { cn } from "@/lib/utils";
 import { Separator } from "@/components/ui/separator";
 
