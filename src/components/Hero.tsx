@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Github, ExternalLink, Globe } from "lucide-react";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 const Hero: React.FC = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -146,11 +147,11 @@ const Hero: React.FC = () => {
           <div className="order-1 lg:order-2 flex justify-center">
             <div className={`relative w-64 h-64 md:w-80 md:h-80 transition-all duration-1000 transform ${isLoaded ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}>
               <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-50 to-indigo-50 animate-pulse" />
-              <div className="absolute inset-4 rounded-full bg-gradient-to-br from-white to-gray-50 backdrop-blur-lg shadow-lg" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-16 h-16 md:w-24 md:h-24 text-4xl md:text-6xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-700 to-gray-900 flex items-center justify-center">
-                  P
-                </div>
+              <div className="absolute inset-4 rounded-full overflow-hidden bg-gradient-to-br from-white to-gray-50 backdrop-blur-lg shadow-lg">
+                <Avatar className="w-full h-full">
+                  <AvatarImage src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=300&h=300&fit=crop&crop=faces" alt="Profile photo" className="object-cover" />
+                  <AvatarFallback className="text-6xl font-serif font-bold">P</AvatarFallback>
+                </Avatar>
               </div>
             </div>
           </div>
