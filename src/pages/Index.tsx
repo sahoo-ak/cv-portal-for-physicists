@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
@@ -6,13 +5,18 @@ import Section from "@/components/Section";
 import ResearchItem from "@/components/ResearchItem";
 import PublicationItem from "@/components/PublicationItem";
 import ExperienceItem from "@/components/ExperienceItem";
+import EducationItem from "@/components/EducationItem";
 import AwardItem from "@/components/AwardItem";
 import ConferenceItem from "@/components/ConferenceItem";
 import ContactForm from "@/components/ContactForm";
-import { researchProjects, publications, experiences, awards, skills, conferencesAndSchools } from "@/lib/data";
+import { researchProjects, publications, experiences, education, awards, skills, conferencesAndSchools } from "@/lib/data";
 import { cn } from "@/lib/utils";
+import { Separator } from "@/components/ui/separator";
 
 const Index: React.FC = () => {
+  const journalPublications = publications.filter(pub => pub.type === 'journal');
+  const preprintPublications = publications.filter(pub => pub.type === 'preprint');
+
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <Header />
@@ -40,25 +44,73 @@ const Index: React.FC = () => {
           </div>
         </Section>
         
+        {/* Education Section */}
+        <Section 
+          id="education" 
+          title="Education" 
+          subtitle="Academic background and qualifications"
+          className="bg-gray-50"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {education.map((edu, index) => (
+              <EducationItem 
+                key={edu.id}
+                degree={edu.degree}
+                institution={edu.institution}
+                location={edu.location}
+                startDate={edu.startDate}
+                endDate={edu.endDate}
+                description={edu.description}
+                index={index}
+              />
+            ))}
+          </div>
+        </Section>
+        
         {/* Publications Section */}
         <Section 
           id="publications" 
           title="Publications" 
           subtitle="Peer-reviewed articles and academic contributions"
-          className="bg-gray-50"
         >
-          <div className="grid grid-cols-1 gap-4">
-            {publications.map((publication, index) => (
-              <PublicationItem 
-                key={publication.id}
-                title={publication.title}
-                authors={publication.authors}
-                journal={publication.journal}
-                year={publication.year}
-                doi={publication.doi}
-                index={index}
-              />
-            ))}
+          <div className="space-y-8">
+            <div className="grid grid-cols-1 gap-4">
+              <h3 className="text-xl font-medium mb-4">Journal Articles</h3>
+              {journalPublications.map((publication, index) => (
+                <PublicationItem 
+                  key={publication.id}
+                  title={publication.title}
+                  authors={publication.authors}
+                  journal={publication.journal}
+                  year={publication.year}
+                  doi={publication.doi}
+                  pdfUrl={publication.pdfUrl}
+                  index={index}
+                  type="journal"
+                  number={index + 1}
+                />
+              ))}
+            </div>
+            
+            {preprintPublications.length > 0 && (
+              <div className="grid grid-cols-1 gap-4 pt-8">
+                <h3 className="text-xl font-medium mb-4">Preprints</h3>
+                {preprintPublications.map((publication, index) => (
+                  <PublicationItem 
+                    key={publication.id}
+                    title={publication.title}
+                    authors={publication.authors}
+                    journal={publication.journal}
+                    year={publication.year}
+                    doi={publication.doi}
+                    pdfUrl={publication.pdfUrl}
+                    index={index}
+                    type="preprint"
+                    number={index + 1}
+                  />
+                ))}
+              </div>
+            )}
           </div>
         </Section>
         
@@ -67,6 +119,7 @@ const Index: React.FC = () => {
           id="conferences" 
           title="Conferences & Schools" 
           subtitle="Academic events and specialized training programs attended"
+          className="bg-gray-50"
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {conferencesAndSchools.map((item, index) => (
@@ -138,6 +191,7 @@ const Index: React.FC = () => {
           id="awards" 
           title="Honors & Awards" 
           subtitle="Recognition for academic and research excellence"
+          className="bg-gray-50"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {awards.map((award, index) => (
@@ -158,7 +212,6 @@ const Index: React.FC = () => {
           id="contact" 
           title="Get in Touch" 
           subtitle="Interested in collaboration or have questions about my research?"
-          className="bg-gray-50"
         >
           <div className="max-w-3xl mx-auto">
             <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-8">

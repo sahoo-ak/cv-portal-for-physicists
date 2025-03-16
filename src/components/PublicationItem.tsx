@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { cn } from "@/lib/utils";
-import { FileText, ExternalLink } from 'lucide-react';
+import { FileText, ExternalLink, Download } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -14,6 +14,8 @@ interface PublicationItemProps {
   doi?: string;
   pdfUrl?: string;
   index: number;
+  type?: "journal" | "preprint";
+  number?: number;
 }
 
 const PublicationItem: React.FC<PublicationItemProps> = ({ 
@@ -23,7 +25,9 @@ const PublicationItem: React.FC<PublicationItemProps> = ({
   year, 
   doi,
   pdfUrl,
-  index
+  index,
+  type = "journal",
+  number
 }) => {
   const [passwordDialogOpen, setPasswordDialogOpen] = useState(false);
   const [password, setPassword] = useState('');
@@ -64,19 +68,32 @@ const PublicationItem: React.FC<PublicationItemProps> = ({
       style={{ transitionDelay: `${index * 50}ms` }}
     >
       <div className="flex justify-between items-start gap-4">
-        <div>
-          <h3 className="text-lg font-medium mb-2 group-hover:text-gray-900 transition-colors">
-            {title}
-          </h3>
-          
-          <p className="text-sm text-gray-500 mb-2">
-            {authors.join(', ')}
-          </p>
-          
-          <div className="flex items-center gap-2 text-sm text-gray-600">
-            <span className="font-medium">{journal}</span>
-            <span>•</span>
-            <span>{year}</span>
+        <div className="flex gap-3">
+          {number && (
+            <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-700 font-medium">
+              {number}
+            </div>
+          )}
+          <div>
+            <h3 className="text-lg font-medium mb-2 group-hover:text-gray-900 transition-colors">
+              {title}
+            </h3>
+            
+            <p className="text-sm text-gray-500 mb-2">
+              {authors.join(', ')}
+            </p>
+            
+            <div className="flex items-center gap-2 text-sm text-gray-600">
+              <span className="font-medium">{journal}</span>
+              <span>•</span>
+              <span>{year}</span>
+              {type === "preprint" && (
+                <>
+                  <span>•</span>
+                  <span className="text-emerald-600 font-medium">Preprint</span>
+                </>
+              )}
+            </div>
           </div>
         </div>
         
@@ -86,8 +103,9 @@ const PublicationItem: React.FC<PublicationItemProps> = ({
               onClick={handleDownloadPDF}
               className="shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
               aria-label="Download PDF"
+              title="Download PDF"
             >
-              <FileText size={18} />
+              <Download size={18} />
             </button>
           )}
           
@@ -98,6 +116,7 @@ const PublicationItem: React.FC<PublicationItemProps> = ({
               rel="noopener noreferrer"
               className="shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
               aria-label="View publication"
+              title="View publication"
             >
               <ExternalLink size={18} />
             </a>

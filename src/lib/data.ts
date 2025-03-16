@@ -31,7 +31,9 @@ export const publications = [
     authors: ["Your Name", "Collaborator A", "Collaborator B"],
     journal: "Physical Review D",
     year: 2023,
-    doi: "10.1103/PhysRevD.98.123456"
+    doi: "10.1103/PhysRevD.98.123456",
+    pdfUrl: "https://example.com/paper1.pdf",
+    type: "journal"
   },
   {
     id: 2,
@@ -39,7 +41,9 @@ export const publications = [
     authors: ["Your Name", "Collaborator C"],
     journal: "Quantum Information Processing",
     year: 2022,
-    doi: "10.1007/s11128-022-12345-6"
+    doi: "10.1007/s11128-022-12345-6",
+    pdfUrl: "https://example.com/paper2.pdf",
+    type: "journal"
   },
   {
     id: 3,
@@ -47,7 +51,9 @@ export const publications = [
     authors: ["Collaborator D", "Your Name", "Collaborator E"],
     journal: "Journal of Statistical Physics",
     year: 2021,
-    doi: "10.1007/s10955-021-12345-6"
+    doi: "10.1007/s10955-021-12345-6",
+    pdfUrl: "https://example.com/paper3.pdf",
+    type: "journal"
   },
   {
     id: 4,
@@ -55,7 +61,59 @@ export const publications = [
     authors: ["Your Name", "Collaborator F"],
     journal: "Physical Review B",
     year: 2020,
-    doi: "10.1103/PhysRevB.101.123456"
+    doi: "10.1103/PhysRevB.101.123456",
+    pdfUrl: "https://example.com/paper4.pdf",
+    type: "journal"
+  },
+  {
+    id: 5,
+    title: "Quantum Phase Transitions in Topological Materials",
+    authors: ["Your Name", "Collaborator G", "Collaborator H"],
+    journal: "arXiv",
+    year: 2023,
+    doi: "10.48550/arXiv.2305.12345",
+    pdfUrl: "https://example.com/preprint1.pdf",
+    type: "preprint"
+  },
+  {
+    id: 6,
+    title: "Novel Approaches to Quantum Simulation Using Cold Atoms",
+    authors: ["Collaborator I", "Your Name"],
+    journal: "arXiv",
+    year: 2022,
+    doi: "10.48550/arXiv.2204.54321",
+    pdfUrl: "https://example.com/preprint2.pdf",
+    type: "preprint"
+  }
+];
+
+export const education = [
+  {
+    id: 1,
+    degree: "Ph.D. in Theoretical Physics",
+    institution: "Example University",
+    location: "Cambridge, MA",
+    startDate: "2021",
+    endDate: "Present",
+    description: "Thesis: 'Quantum Field Theory in Curved Spacetime'. Advisor: Prof. John Doe. Research focus on black hole information paradox and quantum gravity."
+  },
+  {
+    id: 2,
+    degree: "M.Sc. in Physics",
+    institution: "Sample Institute of Technology",
+    location: "Zurich, Switzerland",
+    startDate: "2019",
+    endDate: "2021",
+    description: "Thesis: 'Topological Phases in Non-Hermitian Systems'. GPA: 4.0/4.0. Specialized in quantum condensed matter theory."
+  },
+  {
+    id: 3,
+    degree: "B.Sc. in Physics and Mathematics",
+    institution: "University of Example",
+    location: "Boston, MA",
+    startDate: "2015",
+    endDate: "2019",
+    description: "Double major in Physics and Mathematics. Graduated summa cum laude. Senior thesis on 'Entanglement Entropy in Conformal Field Theories'."
   }
 ];
 
@@ -126,7 +184,7 @@ export const conferencesAndSchools = [
     location: "Geneva, Switzerland",
     date: "June 2023",
     description: "Presented a talk on 'Quantum Fields in Curved Spacetime: Recent Developments', and participated in panel discussions on the future of theoretical physics.",
-    type: "conference"
+    type: "conference" as "conference"
   },
   {
     id: 2,
@@ -135,7 +193,7 @@ export const conferencesAndSchools = [
     location: "Trieste, Italy",
     date: "July 2022",
     description: "Two-week intensive program on advanced topics in topological phases of matter, including lectures and hands-on workshops.",
-    type: "school"
+    type: "school" as "school"
   },
   {
     id: 3,
@@ -144,7 +202,7 @@ export const conferencesAndSchools = [
     location: "Waterloo, Canada",
     date: "April 2022",
     description: "Collaborative workshop focusing on the intersection of quantum information theory and black hole physics.",
-    type: "conference"
+    type: "conference" as "conference"
   },
   {
     id: 4,
@@ -153,7 +211,7 @@ export const conferencesAndSchools = [
     location: "Dresden, Germany",
     date: "January 2021",
     description: "Intensive training on numerical methods for quantum many-body systems and quantum field theories.",
-    type: "school"
+    type: "school" as "school"
   }
 ];
 
