@@ -59,6 +59,16 @@ const PublicationItem: React.FC<PublicationItemProps> = ({
     }
   };
 
+  // Format authors with "Aloka Kumar Sahoo" in bold
+  const formattedAuthors = authors.map((author, idx) => {
+    if (author === "Aloka Kumar Sahoo" || author === "Your Name") {
+      return <strong key={idx}>{author}</strong>;
+    }
+    return <span key={idx}>{author}</span>;
+  }).reduce((prev, curr, idx) => {
+    return idx === 0 ? [curr] : [...prev, <span key={`sep-${idx}`}>, </span>, curr];
+  }, [] as React.ReactNode[]);
+
   return (
     <div 
       className={cn(
@@ -80,7 +90,7 @@ const PublicationItem: React.FC<PublicationItemProps> = ({
             </h3>
             
             <p className="text-sm text-gray-500 mb-2">
-              {authors.join(', ')}
+              {formattedAuthors}
             </p>
             
             <div className="flex items-center gap-2 text-sm text-gray-600">

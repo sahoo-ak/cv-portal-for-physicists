@@ -11,6 +11,7 @@ interface EducationItemProps {
   endDate: string;
   description: string;
   index: number;
+  isLarge?: boolean;
 }
 
 const EducationItem: React.FC<EducationItemProps> = ({ 
@@ -20,13 +21,15 @@ const EducationItem: React.FC<EducationItemProps> = ({
   startDate, 
   endDate, 
   description,
-  index
+  index,
+  isLarge = false
 }) => {
   return (
     <div 
       className={cn(
         "group p-6 bg-white border border-gray-100 rounded-lg transition-all duration-300",
-        "hover:shadow-md hover:border-gray-200"
+        "hover:shadow-md hover:border-gray-200",
+        isLarge && "col-span-full"
       )}
       style={{ transitionDelay: `${index * 50}ms` }}
     >

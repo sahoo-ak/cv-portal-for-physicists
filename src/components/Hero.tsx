@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { Github, ExternalLink } from "lucide-react";
+import { Github, ExternalLink, Globe } from "lucide-react";
 
 const Hero: React.FC = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -51,61 +51,92 @@ const Hero: React.FC = () => {
               {/* Academic social profiles */}
               <div className="mt-8 pt-8 border-t border-gray-100">
                 <h3 className="text-sm font-medium text-gray-500 mb-3">Academic Profiles</h3>
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-4">
                   <a 
                     href="https://scholar.google.com" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center h-10 w-10 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors"
+                    className="inline-flex items-center justify-center p-2 bg-white hover:bg-gray-50 rounded-md border border-gray-200 transition-colors"
                     aria-label="Google Scholar"
+                    title="Google Scholar"
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269z" />
-                      <path d="M12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z" />
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-600">
+                      <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
+                      <path d="M12 14l-6.16-3.422a12.083 12.083 0 00-.665 6.479A11.952 11.952 0 0112 20.055a11.952 11.952 0 016.824-2.998 12.078 12.078 0 00-.665-6.479L12 14z"></path>
+                      <circle cx="12" cy="8" r="4"></circle>
                     </svg>
+                    <span className="ml-2 font-medium text-sm">Google Scholar</span>
                   </a>
+                  
                   <a 
                     href="https://www.researchgate.net" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center h-10 w-10 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors"
+                    className="inline-flex items-center justify-center p-2 bg-white hover:bg-gray-50 rounded-md border border-gray-200 transition-colors"
                     aria-label="ResearchGate"
+                    title="ResearchGate"
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M19.586 5.586a2 2 0 0 0-2.828 0L12 10.344 7.242 5.586a2 2 0 1 0-2.828 2.828L9.172 13.172a2 2 0 0 0 2.828 0l4.758-4.758a2 2 0 0 0 0-2.828z" />
-                      <circle cx="12" cy="12" r="10" />
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-green-600">
+                      <path d="M19.586 5.586a2 2 0 0 0-2.828 0L12 10.344 7.242 5.586a2 2 0 1 0-2.828 2.828L9.172 13.172a2 2 0 0 0 2.828 0l4.758-4.758a2 2 0 0 0 0-2.828z" fill="currentColor" />
+                      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2" fill="none" />
                     </svg>
+                    <span className="ml-2 font-medium text-sm">ResearchGate</span>
                   </a>
-                  <a 
-                    href="https://github.com" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center h-10 w-10 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors"
-                    aria-label="GitHub"
-                  >
-                    <Github size={20} />
-                  </a>
+                  
                   <a 
                     href="https://orcid.org" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center h-10 w-10 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors"
+                    className="inline-flex items-center justify-center p-2 bg-white hover:bg-gray-50 rounded-md border border-gray-200 transition-colors"
                     aria-label="ORCID"
+                    title="ORCID"
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z" />
-                      <circle cx="12" cy="7" r="1" />
-                      <path d="M12 9v8" />
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-green-700">
+                      <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z" stroke="currentColor" strokeWidth="2" fill="none" />
+                      <circle cx="12" cy="7" r="1" fill="currentColor" />
+                      <path d="M12 9v8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                     </svg>
+                    <span className="ml-2 font-medium text-sm">ORCID</span>
                   </a>
+                  
                   <a 
-                    href="https://sciprofiles.com" 
+                    href="https://www.webofscience.com" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center h-10 w-10 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors"
-                    aria-label="SciProfile"
+                    className="inline-flex items-center justify-center p-2 bg-white hover:bg-gray-50 rounded-md border border-gray-200 transition-colors"
+                    aria-label="Web of Science"
+                    title="Web of Science"
                   >
-                    <ExternalLink size={18} />
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-blue-700">
+                      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" />
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" />
+                      <path d="M8 12a4 4 0 1 0 8 0 4 4 0 1 0 -8 0" stroke="currentColor" strokeWidth="2" fill="none" />
+                    </svg>
+                    <span className="ml-2 font-medium text-sm">Web of Science</span>
+                  </a>
+                  
+                  <a 
+                    href="https://www.scimagojr.com" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center p-2 bg-white hover:bg-gray-50 rounded-md border border-gray-200 transition-colors"
+                    aria-label="Scimago"
+                    title="Scimago"
+                  >
+                    <Globe size={24} className="text-orange-600" />
+                    <span className="ml-2 font-medium text-sm">Scimago</span>
+                  </a>
+                  
+                  <a 
+                    href="https://github.com" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center p-2 bg-white hover:bg-gray-50 rounded-md border border-gray-200 transition-colors"
+                    aria-label="GitHub"
+                    title="GitHub"
+                  >
+                    <Github size={24} className="text-gray-800" />
+                    <span className="ml-2 font-medium text-sm">GitHub</span>
                   </a>
                 </div>
               </div>
