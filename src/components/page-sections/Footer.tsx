@@ -8,6 +8,16 @@ const Footer: React.FC = () => {
         <div className="text-center text-gray-500 text-sm">
           <p className="mb-2">© {new Date().getFullYear()} | PhD Researcher | All Rights Reserved</p>
           <p>Designed and developed with precision and elegance</p>
+          <p className="mt-2">
+            <a 
+              href="https://github.com/yourusername/yourrepository" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-gray-800 transition-colors"
+            >
+              View on GitHub
+            </a>
+          </p>
         </div>
       </div>
     </footer>
