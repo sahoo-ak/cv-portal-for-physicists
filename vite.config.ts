@@ -10,7 +10,7 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
   },
-  base: './', // Add this line for GitHub Pages compatibility
+  base: '/cv-portal-for-physicists/', // Replace with your repo name
   plugins: [
     react(),
     mode === 'development' &&
